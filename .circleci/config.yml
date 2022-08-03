@@ -6,14 +6,14 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm i 
+      - run: npm i
       - run: npm run lint
   test:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm i 
+      - run: npm i
       - run: npm run test
   analyze:
     docker:
@@ -21,13 +21,14 @@ jobs:
     steps:
       - checkout
       - run: npm audit
+
 workflows:
-  main_workflow:
+  my_workflow:
     jobs:
       - build
       - test:
-          requires: 
+          requires:
             - build
       - analyze:
-          requires: 
+          requires:
             - test
